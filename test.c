@@ -26,12 +26,34 @@ int main()
     printf("\n%f\n\n", total);
 
     expa(array, array, array, 6);
-    for (int i = 0; i < 6; i++)
-    {
-        printf("%f\n", array[i]);
-    }
+    print_array(array, 6, "\n", 100);
 
-    printf("%d", equi(array, output, 6));
+    printf("%d\n", equi(array, output, 6));
+
+    compare_to_bool(output, output, output, 6, "==");
+    print_array(output, 6, " ", 0);
+
+    printf("\n");
+
+    cumsum(output, output, 6);
+    print_array(output, 6, " ", 0);
+
+    printf("\n");
+
+    neg(output, output, 6);
+    print_array(output, 6, " ", 0);
+
+    printf("\n");
+
+    absa(output, output, 6);
+    print_array(output, 6, " ", 0);
+
+    printf("\n");
+
+    mul_cons(output, output, 2, 6);
+    print_array(output, 6, " ", 0);
+
+    to_file(output, 6, "output.txt", " ", 6);
 
     return 0;
 }
