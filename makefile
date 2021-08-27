@@ -5,7 +5,9 @@ all:
 	${C} ${opt} main.c -o main
 
 lib:
-	${C} ${opt} lib.c -o lib
+	${C} ${opt} test.c lib.c -o test
+	./test
+
 as:
 	${C} -fverbose-asm main.c -S 
 
