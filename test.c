@@ -55,5 +55,24 @@ int main()
 
     to_file(output, 6, "output.txt", " ", 6);
 
+    char res = cmpstr("dsfasfs", "dsfadsfs");
+    printf("\n%d\n", res);
+
+    char str[50];
+    to_str(str, output, 6, " - ", 0);
+    printf("%s", str);
+
+    int countt = str_count("afsdgdsafdsffdfdfdfdagacas", "df");
+    printf("\n%d\n", countt);
+
+    double outputa[3];
+    slice_arr(outputa, output, 5, 1, -1);
+    print_array(outputa, 4, " - ", 0);
+
+    double bigar[1000000];
+    uniform_init(bigar, 3, 1000000);
+    mul(bigar, bigar, bigar, 1000000);
+    print_array(bigar, 1000000, "", 0);
+
     return 0;
 }

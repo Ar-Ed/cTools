@@ -50,6 +50,32 @@ void neg(double output[], double array[], int size)
     }
 }
 
+void copy(double output[], double array[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        output[i] = array[i];
+    }
+}
+
+void slice_arr(double output[], double array[], int start, int end, int step_size)
+{
+    if (start < end)
+    {
+        for (int i = start, j = 0; i < end; i += step_size, j++)
+        {
+            output[j] = array[i];
+        }
+    }
+    else
+    {
+        for (int i = start, j = 0; i > end; i += step_size, j++)
+        {
+            output[j] = array[i];
+        }
+    }
+}
+
 char equi(double array1[], double array2[], int size)
 {
     for (int i = 0; i < size; i++)
@@ -101,7 +127,8 @@ void print_array(double array[], double size, char *sep, char decimals)
         printf("%.*f%s", decimals, array[i], sep);
 }
 
-void to_file(double array[], double size, char *file_name, char *sep, char decimals){
+void to_file(double array[], double size, char *file_name, char *sep, char decimals)
+{
     decimals = decimals > 15 ? 15 : decimals;
     FILE *file = fopen(file_name, "a");
 
@@ -109,7 +136,14 @@ void to_file(double array[], double size, char *file_name, char *sep, char decim
         fprintf(file, "%.*f%s", decimals, array[i], sep);
 
     fclose(file);
+}
 
+void to_str(char *str, double array[], double size, char *sep, char decimals)
+{
+    decimals = decimals > 15 ? 15 : decimals;
+
+    for (int i = 0; i < size; i++)
+        printf("%.*f%s", decimals, array[i], sep);
 }
 
 void uniform_init(double array[], double value, int size)
@@ -223,4 +257,58 @@ long char_count(char string[], char sample_char)
             count++;
 
     return count;
+}
+
+char cmpstr(char *str1, char *str2)
+{
+    for (int i = 0;; i++)
+    {
+        if (str1[i] != str2[i])
+            return 0;
+        else if (str2[i] == '\0')
+            return 0;
+        else if (str1[i] == '\0')
+            return 0;
+    }
+    return 1;
+}
+
+int str_count(char string[], char *str)
+{
+    int match = 0;
+    int length = len(str);
+    int cur_length = 0;
+
+    for (int i = 0; string[i] != '\0'; i++)
+    {
+        if (cur_length == length)
+        {
+            match++;
+            cur_length = 0;
+        }
+
+        if (string[i] == str[cur_length])
+            cur_length++;
+        else
+            cur_length = 0;
+    }
+    return match;
+}
+
+void slice_str(char *output, char *input_str, int start, int end, int step_size)
+{
+    if (start < end)
+    {
+        for (int i = start, j = 0; i < end; i += step_size, j++)
+        {
+            output[j] = input_str[i];
+        }
+    }
+    else
+    {
+        for (int i = start, j = 0; i > end; i += step_size, j++)
+        {
+            output[j] = input_str[i];
+        }
+    }
 }

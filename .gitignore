@@ -5,3 +5,5 @@ main.c
 main.h
 main.s
 test
+output.txt
+.vscode
